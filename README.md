@@ -14,7 +14,7 @@ By the end of the practice, you should
 
 In this project you will create a class that will find the shortest path for a
 chess knight from a starting position to an end position. Both the start and end
-positions should be on a standard 8x8 chess board.
+positions should be on a standard 8x8 chess.
 
 **N.B.:** This problem is a lot like word chains!
 
