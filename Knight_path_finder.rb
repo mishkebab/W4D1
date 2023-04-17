@@ -37,23 +37,42 @@ class KnightPathFinder
         children_vals.each do |val|
             child = PolyTreeNode.new(val)
             node.add_child(child)
-            child.parent = node
         end 
     end 
     
-
-
-    def build_move_tree(@root_node, end_pos)
+    def build_move_tree
         queue = [@root_node]
         until queue.empty?
             el = queue.shift
-            if el.value == end_pos
-                return el
-            else 
-                ele.children.each {|child|}
-            end 
-        
-
+            children(el)
+            el.children.each {|child| queue << child}
+        end
     end 
+
+    def find_path(end_pos)
+        queue = [@root_node]  
+        until queue.empty?
+            ele = queue.shift
+            if ele.value == end_pos
+                return ele
+            else
+                ele.children.each {|child| queue << child} 
+            end
+        end 
+        nil
+    end 
+
+    def trace_path_back(end_pos)
+        end_pos = find_path(end_pos)
+        path = []
+        path << end_pos.value
+        until end_pos.parent == @root_node
+            path << end_pos.parent.value
+            end_pos = end_pos.parent
+        end 
+        path << @root_node.value
+        return path.reverse
+    end 
+
 end 
         
